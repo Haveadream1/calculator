@@ -2,10 +2,12 @@
     background-color: #DDE4F1;
     display: flex;
     justify-content: center;
+    font-family: inter;
 }
-/*MB change the police*/ 
-/*Change police size*/
-/* remake the space*/
+.title {
+    font-size: 40px;
+    text-align: center;
+}
 .container {
     background-color: #F2F3F7;
     width: 336px;
@@ -35,6 +37,20 @@
 .container-result > p {
     padding: 0 20px;
 }
+.text-display1 {
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+.text-display2 {
+    font-size: 22px;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: -8px;
+}
+.text-display3 {
+    font-size: 18px;
+    color: rgba(0,0,0,0.32);
+    margin-bottom: 5px;
+}
 .container-operator {
     margin-top: 35px;
     margin-bottom: 10px;
@@ -59,4 +75,11 @@
     box-shadow: 0px 4px 4px #EAEAEA, inset 0px 4px 4px #DDE4F1;
     border-radius: 20px;
     border: none;
+}
+button {
+    font-size: 20px;
+    margin-left: 5px;
+}
+button:active {
+    opacity: 65%;
 }

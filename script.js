@@ -4,7 +4,9 @@ let array = [];
 let result;
 let findIndex;
 let x;
-// need to specify the range of answer
+
+console.log('Please use only one operator at a time')
+
 function regroupFuncNum() {
     array.push(value);
     console.log(array);
@@ -137,8 +139,9 @@ equalButton.addEventListener('click', function() {
     } else if(x === 4) {
         multi();
     } else {
-        result = 'Specify an operator';
+        result = 'miss operator';
     }
+    LastCalcDisplay()
     resultDisplay()
     array = [];
 })
@@ -194,9 +197,9 @@ function multi() {
     return result;
 }
 
-const container = document.querySelector('.container-result');
 const textDisplay1 = document.querySelector('.text-display1');
 const textDisplay2 = document.querySelector('.text-display2');
+const textDisplay3 = document.querySelector('.text-display3');
 function resultDisplay() {
     textDisplay1.textContent = `= ${result}`;
 }
@@ -206,9 +209,11 @@ function calcDisplay() {
     textDisplay2.textContent = takeOfComma;
 }
 
-///////////////////////////////////////////////////////////////////////////////
-/*
-let filtered = array.filter(function(x) {return x <= findIndex;});
+function LastCalcDisplay() {
+    let takeOfComma2 = array.join(' ');
+    textDisplay3.textContent = `${takeOfComma2}`;
+}
+
 /*  Calculator with basic functions
     4 operators + - / * 
     the operations should take 3 variables, values and operator
@@ -217,5 +222,8 @@ let filtered = array.filter(function(x) {return x <= findIndex;});
     currently overwritten
     look to save some lines => cleaner
     add a func to clean each time we pass to another calc
-    need to restrict to one operator at a time
-*/
+    Need to :
+        restrict to one operator/decimal point at a time
+        don't accept value if there are alone 
+        add a backspace button
+        put the first value as 0*/

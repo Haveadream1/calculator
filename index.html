@@ -4,23 +4,27 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script rc="script.js" defer></script>
+    <script src="script.js" defer></script>
     <title>Calculator</title>
 </head>
 <body>
+    <p class="title">Online Calculator</p>
     <div class="container">
         <div class="container-result">
-            <p>40 + 50 +20</p>
-            <p>50 + 50</p>
-            <p>= 100</p>
+            <p class="text-display3">400.5 / 20.60</p>
+            <p class="text-display2">50 + 50</p>
+            <p class="text-display1">= 100</p>
         </div>
 
         <div class="container-operator">
-            <button class="plus">+</button>
-            <button class="minus">-</button>
-            <button class="division">/</button>
-            <button class="multiplication">*</button>
+            <button class="sum-button">+</button>
+            <button class="sub-button">-</button>
+            <button class="division-button">/</button>
+            <button class="multiplication-button">*</button>
         </div>
 
         <div class="container-operands">
@@ -33,9 +37,9 @@
             <button class="seven">7</button>
             <button class="eight">8</button>
             <button class="nine">9</button>
-            <button>.</button>
+            <button class="decimal-point">.</button>
             <button class="zero">0</button>
-            <button>=</button>
+            <button class="equal">=</button>
         </div>
     </div>
 </body>
