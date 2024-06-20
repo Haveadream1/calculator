@@ -1,9 +1,5 @@
-let value;
-let operator;
 let array = [];
-let result;
-let findIndex;
-let operatorChoice;
+let result, value, operator, findIndex, operatorChoice;
 
 console.log('Please use only one operator at a time')
 

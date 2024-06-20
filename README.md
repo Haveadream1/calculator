@@ -15,8 +15,11 @@ The main goal is to improve the use of the event handler as well as the array ma
 ## TODO :
 
     Light / Dark mode  
-    Review JS                                             DONE
-    Review variables name                                 DONE
-    Error message for operation no authorized (red)  
-    Mutiple operator errror  
-    No operand error  
+    Review JS                                             DONE  
+    Review variables name                                 DONE  
+    Grid display                                          DONE  
+    Give error message for operation no authorized  
+        * Multiple operator  
+        * One operand missing ex:1+  
+        * Define a maximum length  
+
