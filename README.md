@@ -15,6 +15,8 @@ The main goal is to improve the use of the event handler as well as the array ma
 ## TODO :
 
     Light / Dark mode  
-    Review JS  
+    Review JS                                             DONE
     Review variables name                                 DONE
     Error message for operation no authorized (red)  
+    Mutiple operator errror  
+    No operand error  

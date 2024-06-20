@@ -3,215 +3,211 @@ let operator;
 let array = [];
 let result;
 let findIndex;
-let x;
+let operatorChoice;
 
 console.log('Please use only one operator at a time')
 
-function regroupFuncNum() {
+function pushArray() {
     array.push(value);
     console.log(array);
-    calcDisplay();
-}
-function regroupFuncOpe() {
-    console.log(operator);
-    array.push(operator);
-    console.log(array);
-    calcDisplay();
+    calculDisplay();
 }
 
 const sumButton = document.querySelector('.sum-button');
 sumButton.addEventListener('click', function() {
-    x = 1;
-    operator = '+';
-    regroupFuncOpe();
-    return array, operator, x;
+    operatorChoice = 1;
+    value = '+';
+    pushArray();
+    return array, value, operatorChoice;
 });
 
 const subButton = document.querySelector('.sub-button');
 subButton.addEventListener('click', function() {
-    x = 2
-    operator = '-';
-    regroupFuncOpe();
-    return array, operator, x;
+    operatorChoice = 2
+    value = '-'
+    pushArray();
+    return array, value, operatorChoice;
 });
 
-const divisionButton = document.querySelector('.division-button');
-divisionButton.addEventListener('click', function() {
-    x = 3;
-    operator = '/';
-    regroupFuncOpe();
-    return array, operator, x;
+const divButton = document.querySelector('.div-button');
+divButton.addEventListener('click', function() {
+    operatorChoice = 3;
+    value = '/';
+    pushArray();
+    return array, value, operatorChoice;
 });
 
-const multiplicationButton = document.querySelector('.multiplication-button');
-multiplicationButton.addEventListener('click', function() {
-    x = 4;
-    operator = '*';
-    regroupFuncOpe();
-    return array, operator, x;
+const mulButton = document.querySelector('.mul-button');
+mulButton.addEventListener('click', function() {
+    operatorChoice = 4;
+    value = '*';
+    pushArray();
+    return array, value, operatorChoice;
 }); 
 
 const one = document.querySelector('.one');
 one.addEventListener('click', function() {
     value = 1;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const two = document.querySelector('.two');
 two.addEventListener('click', function() {
     value = 2;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const three = document.querySelector('.three');
 three.addEventListener('click', function() {
     value = 3;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const four = document.querySelector('.four');
 four.addEventListener('click', function() {
     value = 4;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const five = document.querySelector('.five');
 five.addEventListener('click', function() {
     value = 5;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const six = document.querySelector('.six');
 six.addEventListener('click', function() {
     value = 6;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const seven = document.querySelector('.seven');
 seven.addEventListener('click', function() {
     value = 7;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const eight = document.querySelector('.eight');
 eight.addEventListener('click', function() {
     value = 8;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const nine = document.querySelector('.nine');
 nine.addEventListener('click', function() {
     value = 9;
-    regroupFuncNum();
+    pushArray();
     return array;
 });
 
 const decimalPoint = document.querySelector('.decimal-point');
 decimalPoint.addEventListener('click', function() {
     value = '.';
-    regroupFuncNum();
+    pushArray();
     return array;
 })
 
 const zero = document.querySelector('.zero');
 zero.addEventListener('click', function() {
     value = 0;
-    regroupFuncNum();
+    pushArray();
     return array;
 })
 
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', function() {
-    if(x === 1) {
+    if(operatorChoice === 1) {
         sum();
-    } else if(x === 2) {
+    } else if(operatorChoice === 2) {
         sub();
-    } else if(x === 3) {
-        divide();
-    } else if(x === 4) {
-        multi();
+    } else if(operatorChoice === 3) {
+        div();
+    } else if(operatorChoice === 4) {
+        mul();
     } else {
-        result = 'miss operator';
+        result = 'Operator missing';
     }
-    LastCalcDisplay()
+    lastCalculDisplay()
     resultDisplay()
     array = [];
 })
-/////////////////////////////////////////////////////////////////////
-function convertValueO() {
+
+function sliceBeforeOp() {
     let filtered = array.slice(0,findIndex);
     console.log(filtered);
-    resultValueO = +filtered.join('');
-    console.log(resultValueO);
+    
+    leftValue =+ filtered.join('');
+    console.log(leftValue);
 }
 
-function convertValueT() {
-    let findIndexT = findIndex + 1;
-    let filtered = array.slice(findIndexT);
+function sliceAfterOp() {
+    let indexLeft = findIndex + 1;
+    let filtered = array.slice(indexLeft);
     console.log(filtered);
-    resultValueT = +filtered.join('');
-    console.log(resultValueT);
+
+    rightValue =+ filtered.join('');
+    console.log(rightValue);
 }
 
 function sum() {
     findIndex = array.indexOf('+');
-    convertValueO();
-    convertValueT();
-    let sum = resultValueO + resultValueT;
+    sliceBeforeOp();
+    sliceAfterOp();
+    let sum = leftValue + rightValue;
     result = Math.round((sum + Number.EPSILON) * 100) / 100;
     return result;
 }
 
 function sub() {
     findIndex = array.indexOf('-');
-    convertValueO();
-    convertValueT();
-    let sub = resultValueO - resultValueT;
+    sliceBeforeOp();
+    sliceAfterOp();
+    let sub = leftValue - rightValue;
     result = Math.round((sub + Number.EPSILON) * 100) / 100;
     return result;
 }
 
-function divide() {
+function div() {
     findIndex = array.indexOf('/');
-    convertValueO();
-    convertValueT();
-    let divide = resultValueO / resultValueT;
-    result = Math.round((divide + Number.EPSILON) * 100) / 100;
+    sliceBeforeOp();
+    sliceAfterOp();
+    let div = leftValue / rightValue;
+    result = Math.round((div + Number.EPSILON) * 100) / 100;
     return result;
 }
 
-function multi() {
+function mul() {
     findIndex = array.indexOf('*');
-    convertValueO();
-    convertValueT();
-    let multi = resultValueO * resultValueT;
-    result = Math.round((multi + Number.EPSILON) * 100) / 100;
+    sliceBeforeOp();
+    sliceAfterOp();
+    let mult = leftValue * rightValue;
+    result = Math.round((mult + Number.EPSILON) * 100) / 100;
     return result;
 }
 
-const textDisplay1 = document.querySelector('.text-display1');
-const textDisplay2 = document.querySelector('.text-display2');
-const textDisplay3 = document.querySelector('.text-display3');
+const resultText = document.querySelector('.result-text');
 function resultDisplay() {
-    textDisplay1.textContent = `= ${result}`;
+    resultText.textContent = `= ${result}`;
 }
 
-function calcDisplay() {
-    let takeOfComma = array.join(' ');
-    textDisplay2.textContent = takeOfComma;
+const calculText = document.querySelector('.calcul-text');
+function calculDisplay() {
+    takeOfComma = array.join(' ');
+    calculText.textContent = takeOfComma;
 }
 
-function LastCalcDisplay() {
-    let takeOfComma2 = array.join(' ');
-    textDisplay3.textContent = `${takeOfComma2}`;
+const pastCalculText = document.querySelector('.past-calcul-text');
+function lastCalculDisplay() {
+    takeOfComma = array.join(' ');
+    pastCalculText.textContent = `${takeOfComma}`;
 }
 
 /*  Calculator with basic functions
