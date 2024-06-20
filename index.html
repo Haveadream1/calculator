@@ -12,22 +12,22 @@
     <title>Calculator</title>
 </head>
 <body>
-    <p class="title">Online Calculator</p>
-    <div class="container">
-        <div class="container-result">
-            <p class="text-display3">400.5 / 20.60</p>
-            <p class="text-display2">50 + 50</p>
-            <p class="text-display1">= 100</p>
-        </div>
+    <h1>Online Calculator</h1>
+    <main>
+        <section class="display-section"> <!--container-result-->
+            <p class="past-calcul-text">400.5 / 20.60</p> <!--text-display3-->
+            <p class="calcul-text">50 + 50</p>
+            <p class="result-text">= 100</p>
+        </section>
 
-        <div class="container-operator">
+        <section class="operator-section"> <!--container-operator-->
             <button class="sum-button">+</button>
             <button class="sub-button">-</button>
-            <button class="division-button">/</button>
-            <button class="multiplication-button">*</button>
-        </div>
+            <button class="div-button">/</button> <!--division-button-->
+            <button class="mul-button">*</button> <!--multiplication-button-->
+        </section>
 
-        <div class="container-operands">
+        <section class="operand-section"> <!--container-operands-->
             <button class="one">1</button>
             <button class="two">2</button>
             <button class="three">3</button>
@@ -40,7 +40,7 @@
             <button class="decimal-point">.</button>
             <button class="zero">0</button>
             <button class="equal">=</button>
-        </div>
-    </div>
+        </section>
+    </main>
 </body>
 </html>

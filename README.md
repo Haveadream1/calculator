@@ -16,5 +16,5 @@ The main goal is to improve the use of the event handler as well as the array ma
 
     Light / Dark mode  
     Review JS  
-    Review variables name  
+    Review variables name                                 DONE
     Error message for operation no authorized (red)  

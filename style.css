@@ -1,85 +1,96 @@
 :root {
-    background-color: #DDE4F1;
-    display: flex;
-    justify-content: center;
+    --light-blue: #DDE4F1;
+    --button-white: #F6F5F8;
     font-family: inter;
 }
-.title {
+
+body {
+    background-color: var(--light-blue);
+    display: grid;
+    justify-content: center;
+}
+
+h1 {
     font-size: 40px;
     text-align: center;
+    font-weight: 400;
 }
-.container {
+
+main {
     background-color: #F2F3F7;
     width: 336px;
     height: 703px;
-    margin-top: 50px;
+    margin-top: 35px;
     border-radius: 42px;
     box-shadow: 0 4px 4px rgba(0,0,0,0.06);
     display: flex;
     flex-direction: column;
     align-items: center;
 }
-.container-result {
-    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #DDE4F1 100%);
+
+.display-section { /*MAKE A  GRID*/
     width: 269px;
     height: 233px;
     margin-top: 30px;
-    border-width: 0 3px 3px 3px;
-    border-style: solid;
-    border-color: #EEF1FF;
-    filter: drop-shadow(0px 4px 4px rgba(221, 228, 241, 0.51));
+    border: #EEF1FF solid 3px;
     border-radius: 20px;
+    padding: 10px;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--light-blue) 100%);
+    filter: drop-shadow(0px 4px 4px rgba(221, 228, 241, 0.51));
     display: flex;
     flex-direction: column;
     justify-content: end;
     align-items: flex-end;
 }
-.container-result > p {
+
+.display-section > p {
     padding: 0 20px;
 }
-.text-display1 {
-    font-size: 34px;
-    margin-bottom: 20px;
-}
-.text-display2 {
-    font-size: 22px;
-    color: rgba(0,0,0,0.5);
-    margin-bottom: -8px;
-}
-.text-display3 {
+.past-calcul-text {
     font-size: 18px;
     color: rgba(0,0,0,0.32);
     margin-bottom: 5px;
 }
-.container-operator {
-    margin-top: 35px;
-    margin-bottom: 10px;
+.calcul-text {
+    font-size: 22px;
+    color: rgba(0,0,0,0.5);
+    margin-bottom: -10px;
 }
-.container-operator > button {
-    background: #F6F5F8;
-    width: 53px;
-    height: 38px;
-    box-shadow: 0px 4px 4px #EAEAEA, inset 0px 4px 4px #DDE4F1;
-    border-radius: 20px;
-    border: none;
+.result-text {
+    font-size: 34px;
+    margin-bottom: 20px;
 }
-.container-operands {
-    display: inline-block;
-    text-align: center; 
-}
-.container-operands > button {
-    background: #F6F5F8;
-    width: 84px;
-    height: 66px;
-    margin-top: 16px;
-    box-shadow: 0px 4px 4px #EAEAEA, inset 0px 4px 4px #DDE4F1;
-    border-radius: 20px;
-    border: none;
-}
+
 button {
     font-size: 20px;
-    margin-left: 5px;
+    margin: 0 5px 0 5px;
 }
 button:active {
     opacity: 65%;
+}
+
+.operator-section {
+    margin-top: 15px;
+    padding: 10px;
+}
+.operator-section > button {
+    width: 53px;
+    height: 38px;
+}
+
+.operand-section {
+    text-align: center; 
+}
+.operand-section > button {
+    width: 84px;
+    height: 66px;
+    margin-top: 15px;
+}
+
+.operator-section > button,
+.operand-section > button {
+    background: #F6F5F8;
+    box-shadow: 0px 4px 4px #EAEAEA, inset 0px 4px 4px var(--light-blue);
+    border-radius: 20px;
+    border: none;
 }
