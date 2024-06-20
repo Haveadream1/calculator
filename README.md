@@ -1,6 +1,6 @@
 # Online Calculator
 
-Online calculator is a website that present a virtual version of a calculator with 4 operators, that also allows decimal calculation
+Online calculator is a website that present a virtual version of a calculator with 4 operators, that also allows decimal calculation  
 The project idea come from the odin project
 
 ## Goal
