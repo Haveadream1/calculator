@@ -9,9 +9,13 @@ The main goal is to improve the use of the event handler as well as array manipu
 ## Preview
 [Online Calculator](https://haveadream1.github.io/calculator/)
 
+## Credit
+[The Odin Project](https://www.theodinproject.com/)
+
 ## TODO:
 - Implement Light/Dark mode
 - Display error messages for unauthorized operations:
   - Multiple operators
   - Missing operand (e.g., 1+)
   - Exceeding maximum length
+- Empty field before new display
