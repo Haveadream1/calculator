@@ -1,7 +1,12 @@
 :root {
     --light-blue: #DDE4F1;
     --main-white: #F2F3F7; /*take off after*/
-    --button-white: #F6F5F8;
+
+    --border-display-color: #EEF1FF;
+    --calcul-color: rgba(0,0,0,0.5);
+    --past-calcul-color: rgba(0, 0, 0, 0.250);
+    --button-bg: #F6F5F8;
+
     font-family: inter;
 }
 
@@ -42,7 +47,7 @@ main {
     width: 269px;
     height: 233px;
     margin-top: 30px;
-    border: 3px solid#EEF1FF;
+    border: 3px solid var(--border-display-color);
     border-radius: 20px;
     padding: 10px 10px 20px 10px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, var(--light-blue) 100%);
@@ -59,11 +64,11 @@ main {
 }
 .past-calcul-text {
     font-size: 18px;
-    color: rgba(0,0,0,0.32);
+    color: var(--past-calcul-color);
 }
 .calcul-text {
     font-size: 22px;
-    color: rgba(0,0,0,0.5);
+    color: var(--calcul-color);
 }
 .result-text {
     font-size: 34px;
@@ -98,7 +103,7 @@ button:active {
 
 .operator-section > button,
 .operand-section > button {
-    background: #F6F5F8;
+    background: var(--button-bg);
     box-shadow: 0px 4px 4px #dfdfdf, inset 0px 4px 4px var(--light-blue);
     border-radius: 20px;
     border: none;
