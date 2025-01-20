@@ -6,8 +6,9 @@
 
 body {
     background-color: var(--light-blue);
+    width: 99%; /*on 99 to avoid scroll*/
     display: grid;
-    justify-content: center;
+    justify-items: center;
 }
 
 h1 {
