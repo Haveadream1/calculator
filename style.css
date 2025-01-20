@@ -1,11 +1,20 @@
 :root {
     --light-blue: #DDE4F1;
+    --main-white: #F2F3F7; /*take off after*/
     --button-white: #F6F5F8;
     font-family: inter;
 }
 
+[data-theme="light"] { /* we change only the main color*/
+    --main-bg: #F2F3F7; /*its our main white*/
+}
+
+[data-theme="dark"] {
+    --main-bg: #1d1e23bf;
+}
+  
 body {
-    background-color: var(--light-blue);
+    background-color: var(--light-blue); /*to take off*/
     width: 99%; /*on 99 to avoid scroll*/
     display: grid;
     justify-items: center;
@@ -18,7 +27,7 @@ h1 {
 }
 
 main {
-    background-color: #F2F3F7;
+    background-color: var(--main-white);
     width: 336px;
     height: 703px;
     margin-top: 35px;
