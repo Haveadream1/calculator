@@ -118,18 +118,29 @@ zero.addEventListener('click', function() {
     return array;
 })
 
+function displayAlert(error) {
+    if (error === 'arrayNil') {
+        alert('Please insert at least one operator and two operands')
+    } else if (error === 'operator missing')  {
+        alert('Please use at least one operator');
+    }
+}
+
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', function() {
-    if(operatorChoice === 1) {
+    if (array.length === 0) {
+        displayAlert('arrayNil');
+    } else if (operatorChoice === 1) {
         sum();
-    } else if(operatorChoice === 2) {
+    } else if (operatorChoice === 2) {
         sub();
-    } else if(operatorChoice === 3) {
+    } else if (operatorChoice === 3) {
         div();
-    } else if(operatorChoice === 4) {
+    } else if (operatorChoice === 4) {
         mul();
     } else {
-        result = 'Operator missing';
+        result = 'Operator missing'; /* need to remove after*/
+        displayAlert('operator missing');
     }
     lastCalculDisplay()
     resultDisplay()
