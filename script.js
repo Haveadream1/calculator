@@ -3,43 +3,48 @@ let result, value, operator, findIndex, operatorChoice;
 
 console.log('Please use only one operator at a time')
 
+const calculText = document.querySelector('.calcul-text');
+function displayCalcul() {
+    takeOfComma = array.join(' ');
+    calculText.textContent = takeOfComma;
+}
+
 function pushArray() {
     array.push(value);
     console.log(array);
-    calculDisplay();
+    displayCalcul();
 }
 
-const sumButton = document.querySelector('.sum-button');
-sumButton.addEventListener('click', function() {
-    operatorChoice = 1;
-    value = '+';
-    pushArray();
-    return array, value, operatorChoice;
-});
+const operatorButtons = document.querySelectorAll('.operator-section > button')
 
-const subButton = document.querySelector('.sub-button');
-subButton.addEventListener('click', function() {
-    operatorChoice = 2
-    value = '-'
-    pushArray();
-    return array, value, operatorChoice;
-});
+operatorButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        switch (button.textContent) {
+            case '+':
+                value = '+'; // define value to push in the array
+                operatorChoice = 'addition'; // define to let know which type of operation the user choised
+                pushArray(value);
+                break;
+            case '-':
+                value = '-';
+                operatorChoice = 'subtraction';
+                pushArray(value);
+                break;
+            case '/':
+                value = '/';
+                operatorChoice = 'division';
+                pushArray(value);
+                break;
+            case '*':
+                value = '*';
+                operatorChoice = 'multiplication';
+                pushArray(value);
+                break;
+        }
+    })
+    return array, operatorChoice; // Dont need anymore the value as the its pushed in the array
+})
 
-const divButton = document.querySelector('.div-button');
-divButton.addEventListener('click', function() {
-    operatorChoice = 3;
-    value = '/';
-    pushArray();
-    return array, value, operatorChoice;
-});
-
-const mulButton = document.querySelector('.mul-button');
-mulButton.addEventListener('click', function() {
-    operatorChoice = 4;
-    value = '*';
-    pushArray();
-    return array, value, operatorChoice;
-}); 
 
 const one = document.querySelector('.one');
 one.addEventListener('click', function() {
@@ -123,20 +128,20 @@ function displayAlert(error) {
         alert('Please insert at least one operator and two operands')
     } else if (error === 'operator missing')  {
         alert('Please use at least one operator');
-    }
+    } // add for other error
 }
 
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', function() {
     if (array.length === 0) {
         displayAlert('arrayNil');
-    } else if (operatorChoice === 1) {
+    } else if (operatorChoice === 'addition') { // look for the operator in order to run the correct function assiociated
         sum();
-    } else if (operatorChoice === 2) {
+    } else if (operatorChoice === 'subtraction') {
         sub();
-    } else if (operatorChoice === 3) {
+    } else if (operatorChoice === 'division') {
         div();
-    } else if (operatorChoice === 4) {
+    } else if (operatorChoice === 'multiplication') {
         mul();
     } else {
         result = 'Operator missing'; /* need to remove after*/
@@ -205,11 +210,11 @@ function resultDisplay() {
     resultText.textContent = `= ${result}`;
 }
 
-const calculText = document.querySelector('.calcul-text');
-function calculDisplay() {
-    takeOfComma = array.join(' ');
-    calculText.textContent = takeOfComma;
-}
+// const calculText = document.querySelector('.calcul-text');
+// function calculDisplay() {
+//     takeOfComma = array.join(' ');
+//     calculText.textContent = takeOfComma;
+// }
 
 const pastCalculText = document.querySelector('.past-calcul-text');
 function lastCalculDisplay() {
