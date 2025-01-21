@@ -1,20 +1,23 @@
+// variables declarations
 let array = [];
 let result, value, operator, findIndex, operatorChoice;
 
 console.log('Please use only one operator at a time')
 
 const calculText = document.querySelector('.calcul-text');
-function displayCalcul() {
+function displayCalcul() { // output the calculation, character by character
     takeOfComma = array.join(' ');
     calculText.textContent = takeOfComma;
 }
 
-function pushArray() {
+function pushArray() { // add each value of the button clicked inside an array
     array.push(value);
     console.log(array);
+
     displayCalcul();
 }
 
+// main block to handle operators
 const operatorButtons = document.querySelectorAll('.operator-section > button');
 operatorButtons.forEach(button => { // loop through all buttons
     button.addEventListener('click', () => {
@@ -43,6 +46,7 @@ operatorButtons.forEach(button => { // loop through all buttons
     })
 })
 
+// main block to handle operands
 const operandButtons = document.querySelectorAll('.operand-section > button');
 operandButtons.forEach(button => { // loop through all buttons
     button.addEventListener('click', () => {
@@ -95,8 +99,7 @@ operandButtons.forEach(button => { // loop through all buttons
     })
 })
 
-
-function displayAlert(error) {
+const displayAlert = (error) => { // call an alert depending of the error
     if (error === 'arrayNil') {
         alert('Please insert at least one operator and two operands')
     } else if (error === 'operator missing')  {
@@ -104,6 +107,7 @@ function displayAlert(error) {
     } // add for other error
 }
 
+// main function that handle the differents operations
 const equalButton = document.querySelector('.equal');
 equalButton.addEventListener('click', function() {
     if (array.length === 0) {
@@ -182,12 +186,6 @@ const resultText = document.querySelector('.result-text');
 function resultDisplay() {
     resultText.textContent = `= ${result}`;
 }
-
-// const calculText = document.querySelector('.calcul-text');
-// function calculDisplay() {
-//     takeOfComma = array.join(' ');
-//     calculText.textContent = takeOfComma;
-// }
 
 const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
 function lastCalculDisplay() {
