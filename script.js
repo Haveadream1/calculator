@@ -15,9 +15,8 @@ function pushArray() {
     displayCalcul();
 }
 
-const operatorButtons = document.querySelectorAll('.operator-section > button')
-
-operatorButtons.forEach(button => {
+const operatorButtons = document.querySelectorAll('.operator-section > button');
+operatorButtons.forEach(button => { // loop through all buttons
     button.addEventListener('click', () => {
         switch (button.textContent) {
             case '+':
@@ -42,86 +41,60 @@ operatorButtons.forEach(button => {
                 break;
         }
     })
-    return array, operatorChoice; // Dont need anymore the value as the its pushed in the array
 })
 
-
-const one = document.querySelector('.one');
-one.addEventListener('click', function() {
-    value = 1;
-    pushArray();
-    return array;
-});
-
-const two = document.querySelector('.two');
-two.addEventListener('click', function() {
-    value = 2;
-    pushArray();
-    return array;
-});
-
-const three = document.querySelector('.three');
-three.addEventListener('click', function() {
-    value = 3;
-    pushArray();
-    return array;
-});
-
-const four = document.querySelector('.four');
-four.addEventListener('click', function() {
-    value = 4;
-    pushArray();
-    return array;
-});
-
-const five = document.querySelector('.five');
-five.addEventListener('click', function() {
-    value = 5;
-    pushArray();
-    return array;
-});
-
-const six = document.querySelector('.six');
-six.addEventListener('click', function() {
-    value = 6;
-    pushArray();
-    return array;
-});
-
-const seven = document.querySelector('.seven');
-seven.addEventListener('click', function() {
-    value = 7;
-    pushArray();
-    return array;
-});
-
-const eight = document.querySelector('.eight');
-eight.addEventListener('click', function() {
-    value = 8;
-    pushArray();
-    return array;
-});
-
-const nine = document.querySelector('.nine');
-nine.addEventListener('click', function() {
-    value = 9;
-    pushArray();
-    return array;
-});
-
-const decimalPoint = document.querySelector('.decimal-point');
-decimalPoint.addEventListener('click', function() {
-    value = '.';
-    pushArray();
-    return array;
+const operandButtons = document.querySelectorAll('.operand-section > button');
+operandButtons.forEach(button => { // loop through all buttons
+    button.addEventListener('click', () => {
+        switch (button.textContent) {
+            case '1':
+                value = '1'; // define value to push in the array
+                pushArray(value);
+                break;
+            case '2':
+                value = '2'; 
+                pushArray(value);
+                break;
+            case '3':
+                value = '3';
+                pushArray(value);
+                break;
+            case '4':
+                value = '4'; 
+                pushArray(value);
+                break;
+            case '5':
+                value = '5';
+                pushArray(value);
+                break;
+            case '6':
+                value = '6'; 
+                pushArray(value);
+                break;
+            case '7':
+                value = '7';
+                pushArray(value);
+                break;
+            case '8':
+                value = '8'; 
+                pushArray(value);
+                break;
+            case '9':
+                value = '9'; 
+                pushArray(value);
+                break;
+            case '.':
+                value = '.';
+                pushArray(value);
+                break;
+            case '0':
+                value = '0'; 
+                pushArray(value);
+                break;
+        }
+    })
 })
 
-const zero = document.querySelector('.zero');
-zero.addEventListener('click', function() {
-    value = 0;
-    pushArray();
-    return array;
-})
 
 function displayAlert(error) {
     if (error === 'arrayNil') {
@@ -216,7 +189,7 @@ function resultDisplay() {
 //     calculText.textContent = takeOfComma;
 // }
 
-const pastCalculText = document.querySelector('.past-calcul-text');
+const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
 function lastCalculDisplay() {
     takeOfComma = array.join(' ');
     pastCalculText.textContent = `${takeOfComma}`;
