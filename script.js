@@ -108,7 +108,7 @@ const displayAlert = (error) => { // call an alert depending of the error
 }
 
 // main function that handle the differents operations
-const equalButton = document.querySelector('.equal');
+const equalButton = document.querySelector('.equal-button');
 equalButton.addEventListener('click', function() {
     if (array.length === 0) {
         displayAlert('arrayNil');
