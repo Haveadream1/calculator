@@ -1,6 +1,6 @@
 :root {
     --light-blue: #DDE4F1;
-    --main-white: #F2F3F7; /*take off after*/
+    --main-white: #F2F3F7;
 
     --border-display-color: #EEF1FF;
     --calcul-color: rgba(0,0,0,0.5);
@@ -9,17 +9,9 @@
 
     font-family: inter;
 }
-
-[data-theme="light"] { /* we change only the main color*/
-    --main-bg: #F2F3F7; /*its our main white*/
-}
-
-[data-theme="dark"] {
-    --main-bg: #1d1e23bf;
-}
   
 body {
-    background-color: var(--light-blue); /*to take off*/
+    background-color: var(--light-blue);
     width: 99%; /*on 99 to avoid scroll*/
     display: grid;
     justify-items: center;
