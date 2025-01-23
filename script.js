@@ -100,19 +100,45 @@ operandButtons.forEach(button => { // loop through all buttons
 })
 
 const displayAlert = (error) => { // call an alert depending of the error
-    if (error === 'arrayNil') {
-        alert('Please insert at least one operator and two operands')
+    if (error === 'arrayNull') {
+        alert('Please insert at least one operator and two operands');
     } else if (error === 'operator missing')  {
         alert('Please use at least one operator');
-    } // add for other error
+    } else if (error === 'operand missing') {
+        alert('Please use at least two operands');
+    } else if (error === 'multiple operators') {
+        alert('Please use only one operator at a time');
+    } else if (error === 'division by zero') {
+        alert('You cannot divide by zero');
+    }
 }
 
-// main function that handle the differents operations
-const equalButton = document.querySelector('.equal-button');
-equalButton.addEventListener('click', function() {
+// Need to empty the array
+
+const checkError = () => { // check for errors and call the display function to alert user
     if (array.length === 0) {
-        displayAlert('arrayNil');
-    } else if (operatorChoice === 'addition') { // look for the operator in order to run the correct function assiociated
+        displayAlert('arrayNull');
+    } else if (!array.some(item => ['+','-','/','*'].includes(item))) { // check if we have at least one of the 4 operators
+        displayAlert('operator missing');
+    } else if (!array.some(item => [1,2,3,4,5,6,7,8,9,0].includes(item))) { // block from here
+        displayAlert('operand missing')
+    } else if(array.some(item => ['+','-','/','*'].includes(item).length > 1)) {
+        displayAlert('multiple operators')
+    } else { // call the main functions if no error found
+        mainFunction()
+    }
+    //else if () {
+    //     displayAlert('multiple operators')
+    // } else if () {
+    //     displayAlert('division by zero')
+}
+
+// array.filter((value) =>)
+
+// main function that handle the differents operations
+const mainFunction = () => {
+    checkError();
+    if (operatorChoice === 'addition') { // look for the operator in order to run the correct function assiociated
         sum();
     } else if (operatorChoice === 'subtraction') {
         sub();
@@ -120,14 +146,14 @@ equalButton.addEventListener('click', function() {
         div();
     } else if (operatorChoice === 'multiplication') {
         mul();
-    } else {
-        result = 'Operator missing'; /* need to remove after*/
-        displayAlert('operator missing');
     }
-    lastCalculDisplay()
-    resultDisplay()
+    displayLastResult()
+    displayResult()
     array = [];
-})
+}
+
+const equalButton = document.querySelector('.equal-button');
+equalButton.addEventListener('click', mainFunction)
 
 function sliceBeforeOp() {
     let filtered = array.slice(0,findIndex);
@@ -183,12 +209,12 @@ function mul() {
 }
 
 const resultText = document.querySelector('.result-text');
-function resultDisplay() {
+function displayResult() {
     resultText.textContent = `= ${result}`;
 }
 
 const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
-function lastCalculDisplay() {
+function displayLastResult() {
     takeOfComma = array.join(' ');
     pastCalculText.textContent = `${takeOfComma}`;
 }
