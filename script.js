@@ -115,45 +115,6 @@ const displayAlert = (error) => { // call an alert depending of the error
 
 // Need to empty the array
 
-const checkError = () => { // check for errors and call the display function to alert user
-    if (array.length === 0) {
-        displayAlert('arrayNull');
-    } else if (!array.some(item => ['+','-','/','*'].includes(item))) { // check if we have at least one of the 4 operators
-        displayAlert('operator missing');
-    } else if (!array.some(item => [1,2,3,4,5,6,7,8,9,0].includes(item))) { // block from here
-        displayAlert('operand missing')
-    } else if(array.some(item => ['+','-','/','*'].includes(item).length > 1)) {
-        displayAlert('multiple operators')
-    } else { // call the main functions if no error found
-        mainFunction()
-    }
-    //else if () {
-    //     displayAlert('multiple operators')
-    // } else if () {
-    //     displayAlert('division by zero')
-}
-
-// array.filter((value) =>)
-
-// main function that handle the differents operations
-const mainFunction = () => {
-    checkError();
-    if (operatorChoice === 'addition') { // look for the operator in order to run the correct function assiociated
-        sum();
-    } else if (operatorChoice === 'subtraction') {
-        sub();
-    } else if (operatorChoice === 'division') {
-        div();
-    } else if (operatorChoice === 'multiplication') {
-        mul();
-    }
-    displayLastResult()
-    displayResult()
-    array = [];
-}
-
-const equalButton = document.querySelector('.equal-button');
-equalButton.addEventListener('click', mainFunction)
 
 function sliceBeforeOp() {
     let filtered = array.slice(0,findIndex);
@@ -171,6 +132,59 @@ function sliceAfterOp() {
     rightValue =+ filtered.join('');
     console.log(rightValue);
 }
+
+const resultText = document.querySelector('.result-text');
+const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
+
+// if we have only one operand send error
+// clean the display and array when error
+const checkError = () => { // check for errors and call the display function to alert user
+    findIndex = array.indexOf('/');
+    sliceAfterOp() // for our division by 0
+
+
+    if (array.length === 0) {
+        displayAlert('arrayNull');
+    } else if (!array.some(item => ['+','-','/','*'].includes(item))) { // check if we have at least one of the 4 operators
+        displayAlert('operator missing'); 
+    } else if (![1,2,3,4,5,6,7,8,9,0].includes(rightValue)) { // block from here // change by strings of number
+        displayAlert('operand missing')
+    } else if (rightValue === 0 && operatorChoice === 'division') {
+        displayAlert('division by zero')
+    // } else if (!array.some(item => [1,2,3,4,5,6,7,8,9,0].includes(item))) { // block from here // change by strings of number
+    //     displayAlert('operand missing')
+    } else if(array.some(item => ['+','-','/','*'].includes(item).length > 1)) {
+        displayAlert('multiple operators')
+    } else { // call the main functions if no error found
+        return true
+    }
+    array = [];
+    resultText.textContent = '';
+    return false
+}
+
+// array.filter((value) =>)
+
+// main function that handle the differents operations
+const mainFunction = () => {
+    if (checkError()) { // only run if error free
+        if (operatorChoice === 'addition') { // look for the operator in order to run the correct function assiociated
+            sum();
+        } else if (operatorChoice === 'subtraction') {
+            sub();
+        } else if (operatorChoice === 'division') {
+            div();
+        } else if (operatorChoice === 'multiplication') {
+            mul();
+        }
+        displayLastResult()
+        displayResult()
+        array = [];
+    }
+}
+
+const equalButton = document.querySelector('.equal-button');
+equalButton.addEventListener('click', mainFunction)
 
 function sum() {
     findIndex = array.indexOf('+');
@@ -208,12 +222,12 @@ function mul() {
     return result;
 }
 
-const resultText = document.querySelector('.result-text');
+
 function displayResult() {
     resultText.textContent = `= ${result}`;
 }
 
-const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
+
 function displayLastResult() {
     takeOfComma = array.join(' ');
     pastCalculText.textContent = `${takeOfComma}`;
