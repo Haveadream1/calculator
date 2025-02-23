@@ -113,9 +113,6 @@ const displayAlert = (error) => { // call an alert depending of the error
     }
 }
 
-// Need to empty the array
-
-
 function sliceBeforeOp() {
     let filtered = array.slice(0,findIndex);
     console.log(filtered);
@@ -136,25 +133,16 @@ function sliceAfterOp() {
 const resultText = document.querySelector('.result-text');
 const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
 
-// if we have only one operand send error
-// clean the display and array when error
-const checkError = () => { // check for errors and call the display function to alert user
-    findIndex = array.indexOf('/');
-    sliceAfterOp() // for our division by 0
+const operators = new Set(['+','-','/','*']);
+const numbers = new Set(["1","2","3","4","5","6","7","8","9","0"]);
 
-
+const checkError = () => {
     if (array.length === 0) {
         displayAlert('arrayNull');
-    } else if (!array.some(item => ['+','-','/','*'].includes(item))) { // check if we have at least one of the 4 operators
+    } else if (!array.some(el => operators.has(el))) {
         displayAlert('operator missing'); 
-    } else if (![1,2,3,4,5,6,7,8,9,0].includes(rightValue)) { // block from here // change by strings of number
+    } else if (!array.some(el => numbers.has(el))) {
         displayAlert('operand missing')
-    } else if (rightValue === 0 && operatorChoice === 'division') {
-        displayAlert('division by zero')
-    // } else if (!array.some(item => [1,2,3,4,5,6,7,8,9,0].includes(item))) { // block from here // change by strings of number
-    //     displayAlert('operand missing')
-    } else if(array.some(item => ['+','-','/','*'].includes(item).length > 1)) {
-        displayAlert('multiple operators')
     } else { // call the main functions if no error found
         return true
     }
@@ -163,12 +151,10 @@ const checkError = () => { // check for errors and call the display function to 
     return false
 }
 
-// array.filter((value) =>)
 
-// main function that handle the differents operations
 const mainFunction = () => {
     if (checkError()) { // only run if error free
-        if (operatorChoice === 'addition') { // look for the operator in order to run the correct function assiociated
+        if (operatorChoice === 'addition') {
             sum();
         } else if (operatorChoice === 'subtraction') {
             sub();
