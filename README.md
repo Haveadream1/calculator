@@ -13,6 +13,7 @@ The main goal is to improve the use of the event handler as well as array manipu
 [The Odin Project](https://www.theodinproject.com/)
 
 ## TODO:
+- disale the operators +, /, * at the begining of each new calcul
 - Display error messages for unauthorized operations:
   - Multiple operators
   - Missing operand (e.g., 1+)
