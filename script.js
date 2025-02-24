@@ -99,17 +99,53 @@ operandButtons.forEach(button => { // loop through all buttons
     })
 })
 
-const displayAlert = (error) => { // call an alert depending of the error
+const displayAlert = (error) => {
     if (error === 'arrayNull') {
         alert('Please insert at least one operator and two operands');
+    } else if (error === 'length error') {
+        alert('Please use less than 35 characters');
     } else if (error === 'operator missing')  {
         alert('Please use at least one operator');
     } else if (error === 'operand missing') {
         alert('Please use at least two operands');
-    } else if (error === 'multiple operators') {
-        alert('Please use only one operator at a time');
-    } else if (error === 'division by zero') {
-        alert('You cannot divide by zero');
+    }
+}
+
+const operators = new Set(['+','-','/','*']);
+const numbers = new Set(["1","2","3","4","5","6","7","8","9","0"]);
+
+const checkError = () => {
+    if (array.length === 0) {
+        displayAlert('arrayNull');
+    } else if (array.length >= 35) {
+        displayAlert('length error')
+    } else if (!array.some(el => operators.has(el))) {
+        displayAlert('operator missing'); 
+    } else if (!array.some(el => numbers.has(el))) {
+        displayAlert('operand missing')
+    } else {
+        return true
+    }
+    array = [];
+    resultText.textContent = '';
+    return false
+}
+
+
+const mainFunction = () => { // only run if error free
+    if (checkError()) { 
+        if (operatorChoice === 'addition') {
+            sum();
+        } else if (operatorChoice === 'subtraction') {
+            sub();
+        } else if (operatorChoice === 'division') {
+            div();
+        } else if (operatorChoice === 'multiplication') {
+            mul();
+        }
+        displayLastResult()
+        displayResult()
+        array = [];
     }
 }
 
@@ -132,42 +168,6 @@ function sliceAfterOp() {
 
 const resultText = document.querySelector('.result-text');
 const pastCalculText = document.querySelector('.past-calcul-text'); // show past result not past calcul
-
-const operators = new Set(['+','-','/','*']);
-const numbers = new Set(["1","2","3","4","5","6","7","8","9","0"]);
-
-const checkError = () => {
-    if (array.length === 0) {
-        displayAlert('arrayNull');
-    } else if (!array.some(el => operators.has(el))) {
-        displayAlert('operator missing'); 
-    } else if (!array.some(el => numbers.has(el))) {
-        displayAlert('operand missing')
-    } else { // call the main functions if no error found
-        return true
-    }
-    array = [];
-    resultText.textContent = '';
-    return false
-}
-
-
-const mainFunction = () => {
-    if (checkError()) { // only run if error free
-        if (operatorChoice === 'addition') {
-            sum();
-        } else if (operatorChoice === 'subtraction') {
-            sub();
-        } else if (operatorChoice === 'division') {
-            div();
-        } else if (operatorChoice === 'multiplication') {
-            mul();
-        }
-        displayLastResult()
-        displayResult()
-        array = [];
-    }
-}
 
 const equalButton = document.querySelector('.equal-button');
 equalButton.addEventListener('click', mainFunction)
