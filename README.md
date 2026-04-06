@@ -6,6 +6,16 @@ The project idea comes from the Odin project.
 This app uses JS / CSS / HTML
 The main goal is to improve the use of the event handler as well as array manipulation.
 
+### Conversion into Typescript
+What to keep in mind ?
+* Avoid any
+* Implement state management
+* Add tsconfig file
+* Enable strict: true
+* Run tsc --noEmit to see errors
+* Add input verifications
+* Add simple test with Vitest/Jest
+
 ## Preview
 [Online Calculator](https://haveadream1.github.io/calculator/)
 
