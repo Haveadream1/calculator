@@ -8,6 +8,9 @@ The main goal is to improve the use of the event handler as well as array manipu
 
 ### Conversion into Typescript
 What to keep in mind ?
+* Install dependencies
+* Enable mixed mode
+* Rename gradually
 * Avoid any
 * Implement state management
 * Add tsconfig file
